@@ -40,7 +40,6 @@ class SignInFragment : Fragment() {
             .requestEmail()
             .build()
 
-
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
 
         auth = FirebaseAuth.getInstance()
@@ -49,13 +48,10 @@ class SignInFragment : Fragment() {
             findNavController().popBackStack()
             findNavController().navigate(R.id.homeFragment)
 
+    }
         firebaseDatabase = FirebaseDatabase.getInstance()
         userReference = firebaseDatabase.getReference("users")
 
-        binding.btnSignIn.setOnClickListener {
-            signIn()
-        }
-    }
 
         binding.btnSignUp.setOnClickListener {
             signIn()
@@ -95,11 +91,14 @@ class SignInFragment : Fragment() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
 
-                    val user = User(
-                        auth.currentUser?.uid,
-                        auth.currentUser?.displayName,
-                        auth.currentUser?.photoUrl.toString(),
-                    )
+                    val user = User(auth.currentUser?.uid,auth.currentUser?.displayName,auth.currentUser?.photoUrl.toString())
+
+//                    val user = User(
+//                        auth.currentUser?.uid,
+//                        auth.currentUser?.displayName,
+//                        auth.currentUser?.photoUrl.toString(),
+//                    )
+
                     userReference.child(user.id!!).setValue(user)
 //                    updateUI(user)
                     findNavController().navigate(R.id.homeFragment)
