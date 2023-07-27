@@ -4,7 +4,7 @@ import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class User:Serializable {
+class User: Serializable {
     var id: String? = null
     var name: String? = null
     var date:String? = SimpleDateFormat("HH:mm").format(Date())
@@ -18,5 +18,4 @@ class User:Serializable {
     }
 
     constructor()
-
 }

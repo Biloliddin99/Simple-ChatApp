@@ -46,6 +46,7 @@ class PrivateChatsFragment : Fragment(), RvClick {
     private lateinit var messageReference: DatabaseReference
     private lateinit var myMessageAdapter: MyMessageAdapter
     private val binding by lazy { FragmentPrivateChatsBinding.inflate(layoutInflater) }
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,

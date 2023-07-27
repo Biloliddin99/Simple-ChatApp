@@ -40,6 +40,7 @@ class SignInFragment : Fragment() {
             .requestEmail()
             .build()
 
+
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
 
         auth = FirebaseAuth.getInstance()
@@ -47,8 +48,6 @@ class SignInFragment : Fragment() {
         if (auth.currentUser!=null){
             findNavController().popBackStack()
             findNavController().navigate(R.id.homeFragment)
-           return binding.root
-        }
 
         firebaseDatabase = FirebaseDatabase.getInstance()
         userReference = firebaseDatabase.getReference("users")
@@ -56,8 +55,15 @@ class SignInFragment : Fragment() {
         binding.btnSignIn.setOnClickListener {
             signIn()
         }
-       return binding.root
     }
+
+        binding.btnSignUp.setOnClickListener {
+            signIn()
+        }
+
+        return binding.root
+    }
+
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -88,7 +94,12 @@ class SignInFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
-                    val user = User(auth.currentUser?.uid,auth.currentUser?.displayName,auth.currentUser?.photoUrl.toString())
+
+                    val user = User(
+                        auth.currentUser?.uid,
+                        auth.currentUser?.displayName,
+                        auth.currentUser?.photoUrl.toString(),
+                    )
                     userReference.child(user.id!!).setValue(user)
 //                    updateUI(user)
                     findNavController().navigate(R.id.homeFragment)
@@ -97,7 +108,13 @@ class SignInFragment : Fragment() {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
 //                    updateUI(null)
+
                     Toast.makeText(requireActivity(), "${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireActivity(),
+                        "${task.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }

@@ -15,4 +15,29 @@
         android:name="com.example.simple_chatapp.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/groupChatsFragment2"
+        android:name="com.example.simple_chatapp.fragments.GroupChatsFragment"
+        android:label="fragment_group_chats"
+        tools:layout="@layout/fragment_group_chats" />
+    <fragment
+        android:id="@+id/groupMessageFragment"
+        android:name="com.example.simple_chatapp.fragments.GroupMessageFragment"
+        android:label="fragment_group_message"
+        tools:layout="@layout/fragment_group_message" />
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="com.example.simple_chatapp.fragments.MessageFragment"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message" />
+    <fragment
+        android:id="@+id/privateChatsFragment"
+        android:name="com.example.simple_chatapp.fragments.PrivateChatsFragment"
+        android:label="fragment_private_chats"
+        tools:layout="@layout/fragment_private_chats" />
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.example.simple_chatapp.SplashActivity"
+        android:label="activity_splash"
+        tools:layout="@layout/activity_splash" />
 </navigation>
